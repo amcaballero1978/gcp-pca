@@ -2,4 +2,4 @@
 
 ## LABS
 
-GSP216 Creste an Internal Load Balancer)
+GSP216 Create an Internal Load Balancer)
