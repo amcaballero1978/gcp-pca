@@ -6,10 +6,10 @@ RESET=$(tput sgr0)
 echo "Please set the below values correctly"
 read -p "${YELLOW}${BOLD}Enter the REGION1: ${RESET}" REGION1
 read -p "${YELLOW}${BOLD}Enter the REGION2: ${RESET}" REGION2
-read -p "${YELLOW}${BOLD}Enter the VM_ZONE: ${RESET}" VM_ZONE
+read -p "${YELLOW}${BOLD}Enter the VM_ZONE: ${RESET}" REGION
 
 # Export variables after collecting input
-export REGION1 REGION2 VM_ZONE
+export REGION1 REGION2 REGION
 
 # Create firewall rules:
 
@@ -36,13 +36,16 @@ gcloud compute instance-templates create instance-template-1 \
 --network=my-internal-app \
 --region=$REGION \
 --subnet=subnet-a \
---tags=lb-backend --metadata=startup-script-url=gs://cloud-training/gcpnet/ilb/startup.sh
+--no-address \
+--tags=lb-backend \
+--metadata=startup-script-url=gs://cloud-training/gcpnet/ilb/startup.sh
 
 gcloud compute instance-templates create instance-template-2 \
 --machine-type=e2-micro \
 --network=my-internal-app \
 --region=$REGION \
 --subnet=subnet-b \
+--no-address \
 --tags=lb-backend \
 --metadata=startup-script-url=gs://cloud-training/gcpnet/ilb/startup.sh
 
@@ -85,6 +88,7 @@ gcloud compute instances create utility-vm \
 --boot-disk-type=pd-standard \
 --network=my-internal-app \
 --subnet=subnet-a \
+--no-address \
 --private-network-ip=10.10.20.50  
 
 
