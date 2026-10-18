@@ -1,6 +1,6 @@
 # Learning GCP
 
-## Protect main branch
+## Protect main OK
 
 ## LABS
 
