@@ -1,7 +1,5 @@
 # Learning GCP
 
-## Protect main OK
-
 ## LABS
 
 GSP216 Create an Internal Load Balancer
